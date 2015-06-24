@@ -18,7 +18,7 @@ module.exports = function(express) {
 				tags: {$in: page.tags},
 				url_name: {$ne: page.url_name}
 			}, function(err, data) {
-				res.render("tags", { title: "Similar pages to " + page.title, pages: data });
+				res.render("tags", { title: "Similar pages to: " + page.title, pages: data });
 			});
 		});
 	});

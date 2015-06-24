@@ -28,6 +28,5 @@ module.exports = function(express) {
 		return output.join('');
 	}
 
-
 	return router;
 };
