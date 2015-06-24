@@ -8,11 +8,10 @@ module.exports = function(express) {
 	router.post('/submit', function(req, res, next) {
 		var models = require('../models/');
 
-		var title = req.body.page_title;
+		var title = req.body.page_title ? title.trim().replace(/\s+/g, '_').replace(/\W/g, '') : randomTitle(4);
 		var content = req.body.page_content;
-		var url_name = title ? title.trim().replace(/\s+/g, '_').replace(/\W/g, '') : randomTitle(4);
+		var url_name = title;
 		var tags = req.body.page_tags.split(/,\s*/);
-		console.log(tags);
 		// STUDENT ASSIGNMENT:
 		// add definitions of the 'title', 'content' and 'url_name' variables here
 		var page = new models.Page({ 'title': title, 'content': content, 'url_name': url_name, "tags": tags});
