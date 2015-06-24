@@ -13,11 +13,13 @@
 
 	<div>
 		<ul class="list-inline">
+			<li><a class="btn btn-danger btn-xs" href="{{url_name}}/similar">view similar</a></li>
 			{% for tag in tags %}
 				<li><a class="label label-info" href="/tags/{{tag}}">#{{tag}}</a></li>
 			{% endfor %}
 		</ul>
 	</div>
+
 
 
 {% endblock %}
