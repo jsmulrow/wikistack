@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  	<div class="page-header">
+	  <h1>{{title}}</h1>
+	</div>
+
+	<form action="/add/submit" method="post" role="form">
+		<div class="form-group">
+			<label for="page_title">PAGE TITLE</label>
+			<input name="page_title" type="text" class="form-control" id="page_title">
+		</div>
+		<div class="form-group">
+			<label for="body_content">PAGE CONTENT</label>
+			<textarea name="page_content" type="text" rows="15" class="form-control" id="body_content"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+
+{% endblock %}

@@ -6,3 +6,7 @@ body {
 a {
   color: #00B7FF;
 }
+
+body { padding-top: 40px; }
+
+footer {padding-left: 25px; }
