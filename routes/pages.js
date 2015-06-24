@@ -51,20 +51,33 @@ module.exports = function(express) {
 		});
 	});
 
+	var randomWords = require("random-words");
 	router.post("/:page/comment", function(req, res, next) {
 		var page = req.params.page;
-
-		Page.update(
-			{url_name: page},
-			{$push:
-				{
-					comments: req.body.page_new_comment,
+		if (req.body.page_new_comment) {
+			Page.update(
+				{url_name: page},
+				{$push:
+					{
+						comments: req.body.page_new_comment,
+					}
+				}, function() {
+					res.redirect('/wiki/' + page + '/#comment-form');
 				}
-			}, function() {
-				res.redirect('/wiki/' + page + '/#comment-form');
-			}
-		);
-
+			);
+		} else {
+			var fakeComment = randomWords(Math.ceil(Math.random() * 50)).join(" ");
+			Page.update(
+				{url_name: page},
+				{$push:
+					{
+						comments: fakeComment,
+					}
+				}, function() {
+					res.redirect('/wiki/' + page + '/#comment-form');
+				}
+			);
+		}
 	});
 
 	return router;

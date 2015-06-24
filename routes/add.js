@@ -10,7 +10,7 @@ module.exports = function(express) {
 
 		var title = req.body.page_title;
 		var content = req.body.page_content;
-		var url_name = title ? title.trim().replace(/\s+/g, '_').replace(/\W/g, '') : randomTitle(12);
+		var url_name = title ? title.trim().replace(/\s+/g, '_').replace(/\W/g, '') : randomTitle(4);
 		var tags = req.body.page_tags.split(/,\s*/);
 		console.log(tags);
 		// STUDENT ASSIGNMENT:
@@ -20,12 +20,13 @@ module.exports = function(express) {
 		res.redirect('/');
 	});
 
+	var randomWords = require("random-words");
 	function randomTitle(length) {
 		var output = [];
 		for (var i = 0; i < length; i++) {
 			output.push(Math.floor(Math.random() * 10));
 		}
-		return output.join('');
+		return randomWords() + output.join('');
 	}
 
 	return router;
