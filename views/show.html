@@ -29,6 +29,9 @@
 		<hr>
 		{% for comment in comments %}
 			{{comment|md}}
+			<form action=""
+				<button class="btn btn-danger btn-xs">Delete Comment</button>
+			</form>
 			<hr>
 		{% endfor %}
 
@@ -38,6 +41,7 @@
 			<textarea name="page_new_comment" type="text" rows="4" class="form-control" id="new_comment"></textarea>
 		</div>
 		<button type="submit" class="btn btn-primary">Submit</button>
+		<span class="btn btn-warning">Edit Comments</span>
 	</form>
 	
 	</div>
