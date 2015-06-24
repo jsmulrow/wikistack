@@ -8,9 +8,9 @@ module.exports = function(express) {
 	router.post('/submit', function(req, res, next) {
 		var models = require('../models/');
 
-		var title = req.body.page_title ? req.body.page_title.trim().replace(/\s+/g, '_').replace(/\W/g, '') : randomTitle(4);
+		var title = req.body.page_title ? req.body.page.title : randomTitle(4);
 		var content = req.body.page_content;
-		var url_name = title;
+		var url_name = title.trim().replace(/\s+/g, '_').replace(/\W/g, '');
 		var tags = req.body.page_tags.split(/,\s*/);
 		for (var tag = 0; tag < tags.length; tag++) {
 			if (!tags[tag]) {
