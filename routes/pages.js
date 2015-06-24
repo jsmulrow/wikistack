@@ -67,5 +67,27 @@ module.exports = function(express) {
 
 	});
 
+	router.post("/:page/delete_comment/:text", function(req, res, next) {
+		var page = req.params.page;
+		var commentText = req.params.text.replace('%20', ' ').trim();
+
+		console.log(commentText);
+
+		Page.update(
+			{url_name: page},
+			{$pull:
+				{
+					comments: '',
+					comments: commentText
+				}
+			}, 
+			{multi: true},
+			function() {
+				res.redirect('/wiki/' + page + '/#comment-form');
+			}
+		);
+
+	});
+
 	return router;
 };
