@@ -4,11 +4,14 @@
   	<div class="page-header">
 	  <h1>{{title}} <small>by Theo and Jack</small></h1>
 	</div>
-	<ul>
-		<li><a href="#">Fullstack Home</a></li>
-		<li><a href="#">Fullstack Home</a></li>
-		<li><a href="#">Fullstack Home</a></li>
-		<li><a href="#">Fullstack Home</a></li>
-		<li><a href="#">Fullstack Home</a></li>
-	</ul>
+	{% if pages.length > 0 %}
+		<ul>
+			{% for page in pages %}
+			<li>{{page|page_link}}</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		There are no pages. Why don't you <a href='/add'>add one</a>?
+	{% endif %}
+
 {% endblock %}

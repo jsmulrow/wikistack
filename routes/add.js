@@ -27,7 +27,6 @@ module.exports = function(express) {
 		return output.join('');
 	}
 
-	console.log(randomTitle(5));
 
 	return router;
 };
