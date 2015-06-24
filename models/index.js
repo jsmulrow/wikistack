@@ -8,6 +8,7 @@ db.on('error', console.error.bind(console, 'mongodb connection error:'));
 var pageSchema = new mongoose.Schema({
   title:    String,
   url_name: String,
+  tags: [String],
   owner_id: String,
   content:  String,
   date:     { type: Date, default: Date.now },
