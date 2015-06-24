@@ -12,6 +12,11 @@ module.exports = function(express) {
 		var content = req.body.page_content;
 		var url_name = title;
 		var tags = req.body.page_tags.split(/,\s*/);
+		for (var tag = 0; tag < tags.length; tag++) {
+			if (!tags[tag]) {
+				tags.splice(tag, 1);
+			}
+		}
 		// STUDENT ASSIGNMENT:
 		// add definitions of the 'title', 'content' and 'url_name' variables here
 		var page = new models.Page({ 'title': title, 'content': content, 'url_name': url_name, "tags": tags});
