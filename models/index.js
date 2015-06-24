@@ -9,6 +9,7 @@ var pageSchema = new mongoose.Schema({
   title:    String,
   url_name: String,
   tags: [String],
+  comments: [String],
   owner_id: String,
   content:  String,
   date:     { type: Date, default: Date.now },

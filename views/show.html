@@ -24,6 +24,24 @@
 		</ul>
 	</div>
 
+	<div>
+		<h2 id="comment-header">Comments</h2>
+		<hr>
+		{% for comment in comments %}
+			{{comment|md}}
+			<hr>
+		{% endfor %}
+
+	<form action="/wiki/{{url_name}}/comment" method="post" role="form" id="comment-form">
+		<div class="form-group">
+			<label for="body_content">ADD A COMMENT</label>
+			<textarea name="page_new_comment" type="text" rows="4" class="form-control" id="new_comment"></textarea>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+	
+	</div>
+
 
 
 {% endblock %}

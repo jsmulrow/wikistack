@@ -7,7 +7,7 @@ module.exports = function(express) {
 		var page = req.params.page;
 
 		Page.findOne({url_name: page}, function(err, data) {
-			res.render("show", {title: data.title, content: data.content, tags: data.tags, url_name: data.url_name});
+			res.render("show", {title: data.title, content: data.content, tags: data.tags, url_name: data.url_name, comments: data.comments});
 		});
 		
 	});
@@ -49,6 +49,22 @@ module.exports = function(express) {
 		Page.remove({url_name: page}, function() {
 			res.redirect('/');
 		});
+	});
+
+	router.post("/:page/comment", function(req, res, next) {
+		var page = req.params.page;
+
+		Page.update(
+			{url_name: page},
+			{$push:
+				{
+					comments: req.body.page_new_comment,
+				}
+			}, function() {
+				res.redirect('/wiki/' + page + '/#comment-form');
+			}
+		);
+
 	});
 
 	return router;
