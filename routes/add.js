@@ -10,12 +10,14 @@ module.exports = function(express) {
 
 		var title = req.body.page_title;
 
-		var url_name = req.body.page_title ? title.trim().replace(/\s+/g, '_').replace(/\W/g, '') : randomTitle(4);
+		var url_name = title ? title.trim().replace(/\s+/g, '_').replace(/\W/g, '') : randomTitle(5);
 		var content = req.body.page_content;
+
 		var tags = req.body.page_tags.split(/,\s*/);
-		for (var tag = 0; tag < tags.length; tag++) {
-			if (!tags[tag]) {
-				tags.splice(tag, 1);
+		// remove undefined tags
+		for (var i = 0; i < tags.length; i++) {
+			if (!tags[i]) {
+				tags.splice(i, 1);
 			}
 		}
 		// STUDENT ASSIGNMENT:
@@ -26,6 +28,7 @@ module.exports = function(express) {
 	});
 
 	var randomWords = require("random-words");
+
 	function randomTitle(length) {
 		var output = [];
 		for (var i = 0; i < length; i++) {
